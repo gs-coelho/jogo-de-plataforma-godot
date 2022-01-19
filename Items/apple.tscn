@@ -95,6 +95,7 @@ script = ExtResource( 3 )
 [node name="apple" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 17
+frame = 5
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

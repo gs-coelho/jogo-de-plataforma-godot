@@ -89,6 +89,7 @@ tracks/2/keys = {
 
 [node name="apple" parent="." index="0"]
 texture = ExtResource( 2 )
+frame = 5
 
 [node name="anim" parent="." index="2"]
 anims/collected = SubResource( 2 )

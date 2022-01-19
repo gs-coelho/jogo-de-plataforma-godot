@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 	
 	_get_input()
 	
-	move_and_slide(velocity)
+	velocity = move_and_slide(velocity)
 	
 	is_grounded = _check_is_ground()
 	
