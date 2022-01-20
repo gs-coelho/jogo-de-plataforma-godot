@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+var UP = Vector2.UP
 var velocity = Vector2.ZERO
 var move_speed = 480
 var gravity = 1200
@@ -7,7 +8,7 @@ var jump_force = -720
 var is_grounded
 var health = 3
 var hurted = false
-var time = 0
+
 var knockback_dir = 1
 var knockback_int = 300
 
@@ -15,10 +16,12 @@ onready var raycasts = $raycasts
 
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
+	velocity.x = 0
 	
-	_get_input()
+	if !hurted:
+		_get_input()
 	
-	velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity, UP)
 	
 	is_grounded = _check_is_ground()
 	
@@ -46,8 +49,6 @@ func _input(event: InputEvent) -> void:
 func _check_is_ground():
 	for raycast in raycasts.get_children():
 		if raycast.is_colliding():
-			print("raycast colidindo" + String(time))
-			time += 1
 			return true
 	return false
 
