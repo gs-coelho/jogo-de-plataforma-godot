@@ -6,8 +6,9 @@
 [ext_resource path="res://Scripts/Mushroom.gd" type="Script" id=4]
 [ext_resource path="res://Prefabs/hitbox.tscn" type="PackedScene" id=5]
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 13, 7 )
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 6.98915
+height = 16.0217
 
 [sub_resource type="Animation" id=6]
 resource_name = "hit"
@@ -143,7 +144,8 @@ frame = 5
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -8 )
-shape = SubResource( 4 )
+rotation = 1.57215
+shape = SubResource( 7 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 root_node = NodePath("../collision")

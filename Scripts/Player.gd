@@ -7,7 +7,7 @@ var jump_force = -720
 var is_grounded
 var health = 3
 var hurted = false
-
+var time = 0
 var knockback_dir = 1
 var knockback_int = 300
 
@@ -23,6 +23,12 @@ func _physics_process(delta: float) -> void:
 	is_grounded = _check_is_ground()
 	
 	_set_animation()
+	
+	for platforms in get_slide_count():
+		var collision = get_slide_collision(platforms)
+		
+		if collision.collider.has_method("collide_with"):
+			collision.collider.collide_with(collision, self)
 
 func _get_input():
 	velocity.x = 0
@@ -40,6 +46,8 @@ func _input(event: InputEvent) -> void:
 func _check_is_ground():
 	for raycast in raycasts.get_children():
 		if raycast.is_colliding():
+			print("raycast colidindo" + String(time))
+			time += 1
 			return true
 	return false
 
